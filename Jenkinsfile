@@ -19,7 +19,7 @@ pipeline {
       stage('SonarQube Analysis') {
         steps {
             //def mvn = tool 'mvn';
-            withSonarQubeEnv('sonarqube') {
+            withSonarQubeEnv('sonar') {
                 sh "mvn sonar:sonar"
             }
             timeout(time: 10, unit: 'MINUTES') {
