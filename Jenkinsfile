@@ -17,9 +17,14 @@ pipeline {
         }
       }
       stage('SonarQube Analysis') {
-        //def mvn = tool 'mvn';
-        withSonarQubeEnv() {
-          sh "mvn sonar:sonar"
+        steps {
+            //def mvn = tool 'mvn';
+            withSonarQubeEnv('sonarqube') {
+                sh "mvn sonar:sonar"
+            }
+            timeout(time: 10, unit: 'MINUTES') {
+                waitForQualityGate abortPipeline: true
+            }
         }
       }
     }
