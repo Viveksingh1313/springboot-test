@@ -8,7 +8,7 @@ pipeline {
       }
       stage('git clone') {
         steps {
-          git branch: 'dev' url: 'https://github.com/Viveksingh1313/springboot-test.git'
+          git branch: 'dev', url: 'https://github.com/Viveksingh1313/springboot-test.git'
         }
       }
       stage('unit test') {
