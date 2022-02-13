@@ -1,7 +1,14 @@
-node {
+pipeline {
     stages {
-      stage('SCM') {
-        checkout scm
+      stage('HelloWorld') {
+        steps {
+          echo 'Hello World'
+        }
+      }
+      stage('git clone') {
+        steps {
+          git clone https://github.com/Viveksingh1313/springboot-test.git
+        }
       }
       stage('unit test') {
         steps {
