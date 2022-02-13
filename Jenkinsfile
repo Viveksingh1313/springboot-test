@@ -1,4 +1,5 @@
 pipeline {
+    agent any
     stages {
       stage('HelloWorld') {
         steps {
@@ -7,7 +8,7 @@ pipeline {
       }
       stage('git clone') {
         steps {
-          git clone https://github.com/Viveksingh1313/springboot-test.git
+          git url: 'https://github.com/Viveksingh1313/springboot-test.git'
         }
       }
       stage('unit test') {
