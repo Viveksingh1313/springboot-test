@@ -31,5 +31,10 @@ pipeline {
             sh 'mvn clean package'
         }
       }
+      stage('Run Spring Boot App') {
+        steps {
+            ansiblePlaybook installation ansible2, inventory: 'dev.inv', playbook: 'ansible.yml', disableHostKeyChecking: true
+        }
+      }
     }
 }
