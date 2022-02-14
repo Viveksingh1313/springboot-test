@@ -1,11 +1,6 @@
 pipeline {
     agent any
     stages {
-      stage('HelloWorld') {
-        steps {
-          echo 'Hello World'
-        }
-      }
       stage('git clone') {
         steps {
           git branch: 'dev', url: 'https://github.com/Viveksingh1313/springboot-test.git'
@@ -22,9 +17,14 @@ pipeline {
             withSonarQubeEnv('sonar') {
                 sh "mvn sonar:sonar"
             }
-            timeout(time: 10, unit: 'MINUTES') {
-                waitForQualityGate abortPipeline: true
-            }
+//             timeout(time: 4, unit: 'MINUTES') {
+//                 waitForQualityGate abortPipeline: true
+//             }
+        }
+      }
+      stage('Build Jars') {
+        steps {
+            sh 'mvn -B -DskipTests clean package  '
         }
       }
     }
