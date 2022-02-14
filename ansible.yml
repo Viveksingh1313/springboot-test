@@ -1,0 +1,5 @@
+---
+- hosts: webservers
+  tasks:
+   - name: Run jar
+     shell: java -jar target/cicd-0.0.1-SNAPSHOT.jar
