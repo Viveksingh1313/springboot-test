@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        mvn '3.0.5'
+    }
     stages {
       stage('git clone') {
         steps {
