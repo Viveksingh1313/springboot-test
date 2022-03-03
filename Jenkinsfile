@@ -4,7 +4,7 @@ pipeline {
         maven 'mvn'
         //version 3.0.5
     }
-//     stages {
+     stages {
 //       stage('git clone') {
 //         steps {
 //           git branch: 'dev', url: 'https://github.com/Viveksingh1313/springboot-test.git'
