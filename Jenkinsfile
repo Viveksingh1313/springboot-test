@@ -4,6 +4,13 @@ pipeline {
         maven 'mvn'
         //version 3.0.5
     }
+    parameters {
+        choice(
+            name: 'envSelected',
+            choices: ['dev', 'test', 'prod'],
+            description: 'Please choose en environment where you want to run?'
+        )
+    }
      stages {
 //       stage('git clone') {
 //         steps {
@@ -12,7 +19,8 @@ pipeline {
 //       }
       stage('unit test') {
         steps {
-          sh 'mvn clean test'
+            echo "Environment selected: ${params.envSelected}"
+            sh 'mvn clean test'
         }
       }
       stage('SonarQube Analysis') {
