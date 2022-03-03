@@ -47,6 +47,7 @@ pipeline {
                         ansiblePlaybook installation: 'ansible2', inventory: 'dev.inv', playbook: 'ansible.yml', disableHostKeyChecking: true
                     } else {
                         echo 'triggered by prod'
+                        input "Continue Deployment to Prod ? Are you Sure ?"
                         ansiblePlaybook installation: 'ansible2', inventory: 'dev.inv', playbook: 'ansible.yml', disableHostKeyChecking: true
                     }
                 }
