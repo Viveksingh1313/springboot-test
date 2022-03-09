@@ -25,8 +25,9 @@ pipeline {
             post {
                 failure {
                     sh "Unit Test Failure"
-                    mail to: viveks@azuga.com,
-                        subject: 'Dude your Azuga-RUC Pipeline failed. Unit tests are important'
+                    mail to: 'viveks@azuga.com',
+                        subject: 'Dude your Azuga-RUC Pipeline failed. Unit tests are important',
+                        body: ''
                 }
             }
           }
@@ -39,8 +40,9 @@ pipeline {
             post {
                 failure {
                     sh "Integration Test Failure"
-                    mail to: viveks@azuga.com,
-                        subject: 'Dude your Azuga-RUC Pipeline failed. Check your integration tests'
+                    mail to: 'viveks@azuga.com',
+                        subject: 'Dude your Azuga-RUC Pipeline failed. Check your integration tests',
+                        body: ''
                 }
             }
           }
