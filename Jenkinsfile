@@ -25,9 +25,11 @@ pipeline {
             post {
                 failure {
                     sh "Unit Test Failure";
-                    mail bcc: '', from: 'vivek.sinless@gmail.com', to: 'viveks@azuga.com',
-                        subject: 'Dude your Azuga-RUC Pipeline failed Unit tests are important',
-                        body: '';
+                    step([$class: 'Mailer',
+                    notifyEveryUnstableBuild: true,
+                       recipients: "viveks@azuga.com",
+                       sendToIndividuals: true])
+                   }
                 }
             }
           }
