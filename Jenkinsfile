@@ -23,10 +23,10 @@ pipeline {
                 sh 'mvn test -Punit-tests'
             }
             post {
-                always {
+                failure {
                     mail to: 'viveks@azuga.com',
-                        subject: 'Dude your Azuga-RUC Pipeline failed. Check your integration tests',
-                        body: 'Unit Test Cases failure'
+                        subject: 'Dude your Azuga-RUC Pipeline failed. Check your Unit Tests',
+                        body: 'Unit Test Cases Failure'
 //                     step([$class: 'Mailer',
 //                     notifyEveryUnstableBuild: true,
 //                        recipients: "viveks@azuga.com",
@@ -44,7 +44,7 @@ pipeline {
                     sh "Integration Test Failure"
                     mail to: 'viveks@azuga.com',
                         subject: 'Dude your Azuga-RUC Pipeline failed. Check your integration tests',
-                        body: ''
+                        body: 'Unit Test Cases Failure'
                 }
             }
           }
