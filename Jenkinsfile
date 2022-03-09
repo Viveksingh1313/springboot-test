@@ -22,12 +22,22 @@ pipeline {
                 echo "Environment selected: ${params.envSelected}"
                 sh 'mvn test -Punit-tests'
             }
+            post {
+                always {
+                    sh "Unit Test Failure"
+                }
+            }
           }
 
           stage('integration test') {
             steps {
                 echo "Environment selected: ${params.envSelected}"
                 sh 'mvn test -Pintegration-tests'
+            }
+            post {
+                always {
+                    sh "Integration Test Failure"
+                }
             }
           }
           stage('SonarQube Analysis') {
@@ -56,6 +66,16 @@ pipeline {
                         echo 'triggered by prod'
                         input "Continue Deployment to Prod ? Are you Sure ?"
                         ansiblePlaybook installation: 'ansible2', inventory: 'dev.inv', playbook: 'ansible.yml', disableHostKeyChecking: true
+                        // check below code for IP ssh based deployment
+                        // for different Ips
+                        // IP address and role goes in dev.inv
+                        /**[webservers]
+                          IP-address ansible_user=ec2-user
+                          **/
+                        // command changes to include crendeitalsId
+                        // private-key values if your jenkins configured key to connect to server IP
+                        // check the screenshot you have
+                        // ansiblePlaybook crendeitalsId: 'private-key', installation: 'ansible2', inventory: 'dev.inv', playbook: 'ansible.yml', disableHostKeyChecking: true
                     }
                 }
 
