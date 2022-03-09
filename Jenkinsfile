@@ -29,7 +29,6 @@ pipeline {
                     notifyEveryUnstableBuild: true,
                        recipients: "viveks@azuga.com",
                        sendToIndividuals: true])
-                   }
                 }
             }
           }
