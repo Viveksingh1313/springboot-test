@@ -23,7 +23,7 @@ pipeline {
                 sh 'mvn test -Punit-tests'
             }
             post {
-                always {
+                failure {
                     sh "Unit Test Failure"
                 }
             }
@@ -35,7 +35,7 @@ pipeline {
                 sh 'mvn test -Pintegration-tests'
             }
             post {
-                always {
+                failure {
                     sh "Integration Test Failure"
                 }
             }
