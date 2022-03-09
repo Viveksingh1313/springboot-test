@@ -25,10 +25,10 @@ pipeline {
             post {
                 failure {
                     sh "Unit Test Failure";
-                    step([$class: 'Mailer',
-                    notifyEveryUnstableBuild: true,
-                       recipients: "viveks@azuga.com",
-                       sendToIndividuals: true])
+//                     step([$class: 'Mailer',
+//                     notifyEveryUnstableBuild: true,
+//                        recipients: "viveks@azuga.com",
+//                        sendToIndividuals: true])
                 }
             }
           }
