@@ -24,10 +24,10 @@ pipeline {
             }
             post {
                 failure {
-                    sh "Unit Test Failure"
-                    mail to: 'viveks@azuga.com',
+                    sh "Unit Test Failure";
+                    mail bcc: '', from: 'vivek.sinless@gmail.com', to: 'viveks@azuga.com',
                         subject: 'Dude your Azuga-RUC Pipeline failed Unit tests are important',
-                        body: ''
+                        body: '';
                 }
             }
           }
