@@ -34,6 +34,6 @@ public class TestRestController {
         u.setName("Smartcar");
         when(userService.getById(1)).thenReturn(u);
         User user = userController.getUser(1);
-        assertEquals("Smartcar", user.getName());
+        assertEquals("NotASmartcar", user.getName());
     }
 }
