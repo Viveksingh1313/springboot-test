@@ -20,7 +20,14 @@ pipeline {
           stage('unit test') {
             steps {
                 echo "Environment selected: ${params.envSelected}"
-                sh 'mvn clean test'
+                sh 'mvn test -Punit-tests'
+            }
+          }
+
+          stage('integration test') {
+            steps {
+                echo "Environment selected: ${params.envSelected}"
+                sh 'mvn test -Pintegration-tests'
             }
           }
           stage('SonarQube Analysis') {
