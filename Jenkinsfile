@@ -26,7 +26,7 @@ pipeline {
                 failure {
                     sh "Unit Test Failure"
                     mail to: 'viveks@azuga.com',
-                        subject: 'Dude your Azuga-RUC Pipeline failed. Unit tests are important',
+                        subject: 'Dude your Azuga-RUC Pipeline failed Unit tests are important',
                         body: ''
                 }
             }
