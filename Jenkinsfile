@@ -22,15 +22,15 @@ pipeline {
                 echo "Environment selected: ${params.envSelected}"
                 sh 'mvn test -Punit-tests'
             }
-//             post {
-//                 failure {
-//                     sh "Unit Test Failure";
-// //                     step([$class: 'Mailer',
-// //                     notifyEveryUnstableBuild: true,
-// //                        recipients: "viveks@azuga.com",
-// //                        sendToIndividuals: true])
-//                 }
-//             }
+            post {
+                failure {
+                    sh "Unit Test Failure";
+//                     step([$class: 'Mailer',
+//                     notifyEveryUnstableBuild: true,
+//                        recipients: "viveks@azuga.com",
+//                        sendToIndividuals: true])
+                }
+            }
           }
           stage('integration test') {
             steps {
