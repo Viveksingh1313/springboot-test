@@ -25,8 +25,8 @@ pipeline {
             post {
                 always {
                     mail to: 'viveks@azuga.com',
-                                            subject: 'Dude your Azuga-RUC Pipeline failed. Check your integration tests',
-                                            body: ''
+                        subject: 'Dude your Azuga-RUC Pipeline failed. Check your integration tests',
+                        body: 'Unit Test Cases failure'
 //                     step([$class: 'Mailer',
 //                     notifyEveryUnstableBuild: true,
 //                        recipients: "viveks@azuga.com",
