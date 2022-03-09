@@ -1,8 +1,6 @@
 package com.example.cicd;
 
-import com.example.cicd.IntegrationTest.IntegrationTest;
 import com.example.cicd.model.User;
-import org.junit.experimental.categories.Category;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(classes = CicdApplication.class,
 		webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class CicdIntegrationTests {
+class IntegrationTestController {
 
 	@LocalServerPort
 	private int port;
