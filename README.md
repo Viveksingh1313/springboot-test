@@ -131,3 +131,38 @@ The plugin org.apache.maven.plugins:maven-resources-plugin:3.2.0 requires Maven 
 
 Failed to execute goal org.apache.maven.plugins:maven-resources-plugin:3.2.0:resources (default-resources) on project cicd:
 The plugin org.apache.maven.plugins:maven-resources-plugin:3.2.0 requires Maven version 3.1.0 ->
+
+
+Mailer plugin to setup mail services  - 
+Mailer Plugin doc link - https://plugins.jenkins.io/mailer/
+difference - https://stackoverflow.com/questions/52114233/what-is-difference-between-extended-email-notification-and-email-notification
+medium link for UI setup - https://medium.com/@arun.dev/get-email-notification-for-jenkins-build-failure-and-success-d59154dc639a
+
+
+
+Ansible with Jenkins had a few bugs on Windows. Works with all Linux system though.
+I am using Centos, we can use any other Linux distributed OS. Should be fine. 
+
+
+After creating a jar -> upload the jar to nexus repository-> Now Ansible picks that jar ->
+Deploys it on our server -> triggers a jar start on server.
+
+Sonarqube Analysis needs some work - Test case coverage needs to be setup using 
+jecko(most used as far as I know, need to re-check ?). The advantage for this is -  
+for any feature one is merging to tetc-dev branch, if the code coverage is less than
+80% the merge request will fail because Jenkins while building that branch will fail it.
+This rule needs to be configured in Sonarqube piepeline. 
+(Need to read blogs, easily achievable though - 16-48 hours max)
+
+Use CICD Blue Ocean pipeline because what I am using is legacy UI
+
+Instead of choosing the environment to deploy in at the beginning, why not make this a
+series of steps . Like :  clone -> build -> deploy dev-> deploy uat -> deploy prod
+But this would not make sense for common branches. Makes sense for UAT or PROD
+branch.
+
+The servers keeps changing. So Jenkins,python, java, sonarqube installation & setup in a docker
+image. Saves time, and makes the system fault tolerant.
+
+Need to work on running server, and exiting the build without terminating the server.
+

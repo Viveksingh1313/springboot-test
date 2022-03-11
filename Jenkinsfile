@@ -27,10 +27,6 @@ pipeline {
                     mail to: 'viveks@azuga.com',
                         subject: 'Dude your Azuga-RUC Pipeline failed. Check your Unit Tests',
                         body: 'Unit Test Cases Failure'
-//                     step([$class: 'Mailer',
-//                     notifyEveryUnstableBuild: true,
-//                        recipients: "viveks@azuga.com",
-//                        sendToIndividuals: true])
                 }
             }
           }
@@ -41,10 +37,9 @@ pipeline {
             }
             post {
                 failure {
-                    sh "Integration Test Failure"
                     mail to: 'viveks@azuga.com',
                         subject: 'Dude your Azuga-RUC Pipeline failed. Check your integration tests',
-                        body: 'Unit Test Cases Failure'
+                        body: 'Integration Test Cases Failure'
                 }
             }
           }
